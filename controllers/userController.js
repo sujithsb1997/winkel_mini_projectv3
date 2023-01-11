@@ -59,6 +59,7 @@ const loadHome = async (req, res) => {
     userSession.offer = offer;
     const banner = await Banner.findOne({ is_active: 1 });
     const productData = await Product.find();
+    console.log(banner);
     res.render("home", {
       isLoggedin,
       products: productData,
