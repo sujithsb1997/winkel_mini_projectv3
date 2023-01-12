@@ -637,6 +637,7 @@ const loadSuccess = async (req, res) => {
     userSession.couponTotal = 0;
     res.render("orderSuccess", {
       orderId: userSession.currentOrder,
+      id:userSession.userId,
       isLoggedin,
     });
   } catch (error) {
@@ -676,6 +677,7 @@ const viewOrder = async (req, res) => {
         isLoggedin,
         order: orderData,
         user: userData,
+        id:userSession.userId
       });
     } else {
       res.redirect("/login");
