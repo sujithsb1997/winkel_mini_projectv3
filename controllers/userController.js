@@ -228,6 +228,7 @@ const loadShop = async (req, res) => {
       res.render("shop", {
         products: productData,
         isLoggedin,
+        id: userSession.userId,
         cat: categoryData,
         totalPages: Math.ceil(count / limit),
         currentPage: page,
