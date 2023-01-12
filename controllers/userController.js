@@ -61,7 +61,7 @@ const loadHome = async (req, res) => {
     const productData = await Product.find();
     console.log(banner);
     res.render("home", {
-      isLoggedin,
+      isLoggedin: false,
       products: productData,
       id: userSession.userId,
       banners: banner,
