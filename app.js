@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
+const cookieParser = require('cookie-parser');
+const session = require('express-session')
+const nocache = require('nocache');
 const adminRoute = require('./routes/adminRoute')
 const user_route = require('./routes/userRoute')
-
 
 require('dotenv').config();
 
@@ -11,10 +13,22 @@ const DB = process.env.DBURL
 mongoose.connect(DB,()=>{
     console.log("Database is connected.")
 })
-
-const session = require('express-session')
 const config = require('./config/config')
- app.use(session({secret:config.sessionSecret}))
+
+app.use(nocache());
+app.use(cookieParser());
+
+
+
+ app.use(
+    session({
+      secret: config.sessionSecret,
+      saveUninitialized: true,
+      cookie: { maxAge: 600000 },
+      resave: false,
+    }),
+  );
+  
 
 // adminRoute.set(session({ 
 //     secret: config.sessionSecret,
