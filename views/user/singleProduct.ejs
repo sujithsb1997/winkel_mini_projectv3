@@ -81,15 +81,21 @@
 							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<% if(idid){ %> 
-							<a class="primary-btn" onclick="addToCart('<%=product._id%>')">Add adad to Cart</a>
+
+							<% if(id){ %> 
+
+							<a class="primary-btn" onclick="addToCart('<%=product._id%>')">Add to Cart</a>
 							<!-- <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a> -->
 							<a class="icon_btn" onclick="addToWishlist('<%=product._id%>')"><i class="lnr lnr lnr-heart"></i></a>
-								<% }else {%> 
+
+								<% }else { %> 
+
 							<a class="primary-btn"  href="/addToCart?id=<%=product._id%>">Add to Cart</a>
 							<!-- <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a> -->
 							<a class="icon_btn" href="/AddToWishlist?id=<%=product._id%>"><i class="lnr lnr lnr-heart"></i></a>
+
 							<% } %> 
+
 						</div>
 
 					</div>

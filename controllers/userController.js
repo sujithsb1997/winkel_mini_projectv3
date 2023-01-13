@@ -265,7 +265,6 @@ const productDetails = async (req, res) => {
       res.render("singleProduct", {
         isLoggedin,
         id: userSession.userId,
-        idid:userSession.userId,
         product: productData,
         products: products,
       });
