@@ -264,6 +264,7 @@ const productDetails = async (req, res) => {
     if (productData) {
       res.render("singleProduct", {
         isLoggedin,
+        id: userSession.userId,
         product: productData,
         products: products,
       });
@@ -360,7 +361,7 @@ const deleteCart = async (req, res, next) => {
     const productId = req.query.id;
     userSession = req.session;
     const userData = await User.findById({ _id: userSession.userId });
-    userData.removefromCart(productId);
+    await userData.removefromCart(productId);
     res.redirect("/cart");
   } catch (error) {
     console.log(error.message);
@@ -389,7 +390,7 @@ const addCartDeleteWishlist = async (req, res) => {
     const productData = await Product.findById({ _id: productId });
     const add = await userData.addToCart(productData);
     if (add) {
-      userData.removefromWishlist(productId);
+      await userData.removefromWishlist(productId);
     }
     res.redirect("/wishlist");
   } catch (error) {
@@ -402,7 +403,7 @@ const deleteWishlist = async (req, res) => {
     const productId = req.query.id;
     userSession = req.session;
     const userData = await User.findById({ _id: userSession.userId });
-    userData.removefromWishlist(productId);
+    await userData.removefromWishlist(productId);
     res.redirect("/wishlist");
   } catch (error) {
     console.log(error.message);
