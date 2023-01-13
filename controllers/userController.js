@@ -322,7 +322,7 @@ const addToCart = async (req, res, next) => {
     const userData = await User.findById({ _id: userSession.userId });
     const productData = await Product.findById({ _id: productId });
     userData.addToCart(productData);
-    res.redirect("/shop");
+    res.redirect("/cart");
   } catch (error) {
     console.log(error.message);
   }
