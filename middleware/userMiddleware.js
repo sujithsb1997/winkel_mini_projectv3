@@ -15,8 +15,8 @@ const isLogin = async (req, res, next) => {
       next();
     }else{
       userSession.userId = null;
-      isLoggedin = false;
-      res.redirect("/userLogout")
+      res.redirect("/login")
+      
     }
     } else {
       res.redirect("/login");

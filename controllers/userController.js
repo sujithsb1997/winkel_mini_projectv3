@@ -154,7 +154,7 @@ const verifyUserLogin = async (req, res) => {
       const passwordMatch = await bcrypt.compare(password, userData.password);
       if (passwordMatch) {
         if (userData.isVerified === 0) {
-          res.render("login", { message: " please verify otp" });
+          res.render("login", { message: "your account has been devactivated please contact the Customer Care for more information" });
         } else {
           if (userData.is_admin === 1) {
             res.render("login", { message: "Not user" });
@@ -476,7 +476,11 @@ const dashboard = async (req, res) => {
   try {
     userSession = req.session;
     const userData = await User.findById({ _id: userSession.userId });
+<<<<<<< HEAD
+    const orderData = await Order.find({ userId: userSession.userId }).sort({createdAt :-1});
+=======
     const orderData = await Order.find({ userId: userSession.userId }).sort({createdAt :-1})
+>>>>>>> 4d1cdc3c1879dc71489af9bfb0d6af5e9e67a917
     const addressData = await Address.find({ userId: userSession.userId });
     console.log(orderData);
     console.log(addressData);

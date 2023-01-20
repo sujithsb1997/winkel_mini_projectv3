@@ -394,7 +394,7 @@ const addCategory = async(req,res)=>{
 
 const adminLogout = async(req,res)=>{
     adminSession = req.session
-    adminSession.userId = false
+    adminSession.adminId = false
     isAdminLoggedin = false
     console.log('Admin logged out');
     res.redirect('/admin')
