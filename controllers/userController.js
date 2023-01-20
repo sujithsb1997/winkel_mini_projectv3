@@ -476,11 +476,7 @@ const dashboard = async (req, res) => {
   try {
     userSession = req.session;
     const userData = await User.findById({ _id: userSession.userId });
-<<<<<<< HEAD
-    const orderData = await Order.find({ userId: userSession.userId }).sort({createdAt :-1});
-=======
     const orderData = await Order.find({ userId: userSession.userId }).sort({createdAt :-1})
->>>>>>> 4d1cdc3c1879dc71489af9bfb0d6af5e9e67a917
     const addressData = await Address.find({ userId: userSession.userId });
     console.log(orderData);
     console.log(addressData);
